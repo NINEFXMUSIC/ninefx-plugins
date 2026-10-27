@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Downloading… | NINEFX</title>
+<style>
+html,body{margin:0;height:100%;background:#050505;color:#e8e8e8;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.w{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;box-sizing:border-box}
+h1{font-size:22px;letter-spacing:.12em;margin:0 0 6px;color:#39FF6A}
+p{margin:8px 0;color:#bbb;max-width:520px;line-height:1.5}
+a{color:#39FF6A}
+.s{width:34px;height:34px;border:3px solid #1d1d1d;border-top-color:#39FF6A;border-radius:50%;animation:r 0.9s linear infinite;margin:18px auto}
+@keyframes r{to{transform:rotate(360deg)}}
+</style></head><body><div class="w">
+<h1 id="t">NINEFX</h1>
+<div class="s"></div>
+<p id="m">Your download is starting…</p>
+<p id="f"></p>
+<p style="font-size:13px;color:#888">Windows may show a SmartScreen warning for new installers. Click <b>More info</b> then <b>Run anyway</b>.</p>
+</div>
+<script>
+var B="https://github.com/NINEFXMUSIC/ninefx-plugins/releases/download/";
+var F={
+ "neo-ix":["NEO-IX","neo-ix-v1.0.0/NEO-IX.by.NINEFX.Setup.exe"],
+ "comp-ix":["COMP-IX","comp-ix-v1.0.2/COMP-IX.by.NINEFX.Setup.exe"],
+ "clip-ix":["CLIP-IX","clip-ix-v1.0.1/CLIP-IX.by.NINEFX.Setup.exe"],
+ "limit-ix":["LIMIT-IX","limit-ix-v2.0.0/LIMIT-IX.by.NINEFX.Setup.exe"],
+ "ix-bundle":["IX Bundle","ix-bundle-v1.0.0/IX.Bundle.by.NINEFX.Setup.exe"]
+};
+var k=(new URLSearchParams(location.search).get("p")||"").toLowerCase(), e=F[k];
+if(e){var u=B+e[1];
+ document.getElementById("t").textContent=e[0]+" by NINEFX";
+ document.getElementById("f").innerHTML='Not starting? <a href="'+u+'">Click here</a>';
+ setTimeout(function(){location.href=u;},150);
+ setTimeout(function(){document.getElementById("m").textContent="Download started. You can close this tab.";},2500);
+}else{document.getElementById("m").textContent="Unknown download.";}
+</script></body></html>
