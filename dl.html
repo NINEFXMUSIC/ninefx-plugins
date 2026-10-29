@@ -16,20 +16,27 @@ a{color:#39FF6A}
 <div class="s"></div>
 <p id="m">Your download is starting…</p>
 <p id="f"></p>
-<p style="font-size:13px;color:#888">Windows may show a SmartScreen warning for new installers. Click <b>More info</b> then <b>Run anyway</b>.</p>
+<p id="n" style="font-size:13px;color:#888">Windows may show a SmartScreen warning for new installers. Click <b>More info</b> then <b>Run anyway</b>.</p>
 </div>
 <script>
-var B="https://github.com/NINEFXMUSIC/ninefx-plugins/releases/download/";
+var B="https://github.com/NINEFXMUSIC/ninefx-plugins/releases/download/", BM="https://ninefxmusic.github.io/ninefx-plugins/mac/";
 var F={
  "neo-ix":["NEO-IX","neo-ix-v1.0.0/NEO-IX.by.NINEFX.Setup.exe"],
  "comp-ix":["COMP-IX","comp-ix-v2.0.0/COMP-IX.by.NINEFX.Setup.2.0.0.exe"],
  "clip-ix":["CLIP-IX","clip-ix-v1.0.1/CLIP-IX.by.NINEFX.Setup.exe"],
  "limit-ix":["LIMIT-IX","limit-ix-v2.0.0/LIMIT-IX.by.NINEFX.Setup.exe"],
  "sat-ix":["SAT-IX","sat-ix-v1.0.1/SAT-IX.by.NINEFX.Setup.1.0.1.exe"],
- "ix-bundle":["IX Bundle","ix-bundle-v1.1.0/IX.Bundle.by.NINEFX.Setup.1.1.0.exe"]
+ "ix-bundle":["IX Bundle","ix-bundle-v1.1.0/IX.Bundle.by.NINEFX.Setup.1.1.0.exe"],
+ "neo-ix-mac":["NEO-IX","NEO-IX.by.NINEFX.1.0.0.macOS.dmg",1],
+ "comp-ix-mac":["COMP-IX","COMP-IX.by.NINEFX.2.0.0.macOS.dmg",1],
+ "clip-ix-mac":["CLIP-IX","CLIP-IX.by.NINEFX.1.0.1.macOS.dmg",1],
+ "limit-ix-mac":["LIMIT-IX","LIMIT-IX.by.NINEFX.2.0.0.macOS.dmg",1],
+ "sat-ix-mac":["SAT-IX","SAT-IX.by.NINEFX.1.0.1.macOS.dmg",1],
+ "ix-bundle-mac":["IX Bundle","IX.Bundle.by.NINEFX.1.1.0.macOS.dmg",1]
 };
 var k=(new URLSearchParams(location.search).get("p")||"").toLowerCase(), e=F[k];
-if(e){var u=B+e[1];
+if(e){var u=(e[2]?BM:B)+e[1];
+ if(e[2])document.getElementById("n").innerHTML="macOS may say the installer is from an unidentified developer. <b>Right-click</b> it and choose <b>Open</b>, or allow it in System Settings &gt; Privacy &amp; Security.";
  document.getElementById("t").textContent=e[0]+" by NINEFX";
  document.getElementById("f").innerHTML='Not starting? <a href="'+u+'">Click here</a>';
  setTimeout(function(){location.href=u;},150);
